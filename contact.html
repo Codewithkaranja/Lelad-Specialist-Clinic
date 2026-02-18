@@ -18,27 +18,81 @@
   <link rel="stylesheet" href="index.css" />
 
   <style>
-    main{ padding-top: 110px; }
+ /* ===== CONTACT HERO (60vh + background) ===== */
+.page-hero{
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 
-    /* Minimal page header (clean, not cluttery) */
-    .page-hero{
-      padding: 34px 0 18px;
-      background: #fff;
-    }
-    .page-hero h1{
-      font-size: clamp(1.9rem, 4vw, 2.8rem);
-      color: var(--deep-blue);
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin: 0 0 8px;
-    }
-    .page-hero p{
-      color:#4a5568;
-      max-width: 760px;
-      line-height: 1.8;
-      margin: 0;
-      font-weight: 500;
-    }
+  /* Background image */
+  background:
+    linear-gradient(to right, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.88) 55%, rgba(255,255,255,0.96) 100%),
+    url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Soft glow overlay */
+.page-hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(16,192,0,.08), transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(0,48,144,.08), transparent 45%);
+}
+
+.page-hero .container{
+  position: relative;
+  z-index: 2;
+}
+
+/* Offset navbar */
+.with-breadcrumbs{
+  padding-top: 120px;
+  padding-bottom: 60px;
+}
+
+/* Title */
+.page-hero h1{
+  font-size: clamp(2.3rem, 4vw, 3rem);
+  color: var(--deep-blue);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+/* Subtitle */
+.page-hero p{
+  color:#4a5568;
+  max-width: 760px;
+  line-height: 1.8;
+  margin: 0;
+  font-weight: 500;
+}
+/* ===== Breadcrumbs ===== */
+.breadcrumbs{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .9rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #6b7a90;
+}
+
+.breadcrumbs a{
+  color: var(--deep-blue);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.breadcrumbs a:hover{
+  color: var(--bright-green);
+}
+
 
     .contact-page{
       padding: 22px 0 90px;
@@ -263,14 +317,25 @@
 
   <main>
     <!-- Minimal header -->
-    <header class="page-hero">
-      <div class="container">
-        <h1>Contact & Book a Consultation</h1>
-        <p>
-          Visit us at Susu Centre, Machakos Town. Call or WhatsApp to book, or send a quick message using the form below.
-        </p>
-      </div>
-    </header>
+   <header class="page-hero with-breadcrumbs">
+  <div class="container">
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Contact</span>
+    </nav>
+
+    <h1>Contact & Book a Consultation</h1>
+    <p>
+      Visit us at Susu Centre, Machakos Town. Call or WhatsApp to book,
+      or send a quick message using the form below.
+    </p>
+
+  </div>
+</header>
+
 
     <section class="contact-page">
       <div class="container">

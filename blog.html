@@ -16,228 +16,7 @@
 
   <!-- Theme CSS -->
   <link rel="stylesheet" href="index.css" />
-
-  <style>
-    main{ padding-top: 110px; }
-
-    /* Minimal header (not cluttery) */
-    .blog-hero{
-      padding: 48px 0 28px;
-      background: #fff;
-    }
-    .blog-hero .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(0,48,144,.06);
-      border: 1px solid rgba(0,48,144,.12);
-      color: var(--deep-blue);
-      font-weight: 800;
-      width: fit-content;
-      margin-bottom: 12px;
-    }
-    .blog-hero .kicker i{ color: var(--bright-green); }
-    .blog-hero h1{
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -0.03em;
-      color: var(--deep-blue);
-      margin-bottom: 8px;
-      line-height: 1.12;
-    }
-    .blog-hero p{
-      color: #4a5568;
-      max-width: 72ch;
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    /* Layout */
-    .blog-layout{
-      padding: 34px 0 90px;
-      background: #fff;
-    }
-    .blog-grid{
-      display:grid;
-      grid-template-columns: 1.35fr .65fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    /* Posts list */
-    .post-card{
-      border-radius: 22px;
-      border: 1px solid rgba(11,18,32,.08);
-      box-shadow: var(--shadow-xs);
-      background: #fff;
-      padding: 18px;
-      display:flex;
-      gap: 16px;
-      align-items:flex-start;
-      transition: .2s ease;
-    }
-    .post-card:hover{
-      transform: translateY(-3px);
-      border-color: rgba(0,48,144,.18);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .post-icon{
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      display:grid;
-      place-items:center;
-      background: linear-gradient(135deg, rgba(0,48,144,.12), rgba(16,192,0,.12));
-      border: 1px solid rgba(0,48,144,.12);
-      flex: 0 0 auto;
-    }
-    .post-icon i{ color: var(--deep-blue); font-size: 18px; }
-
-    .post-content h2{
-      margin: 0 0 6px;
-      font-size: 1.25rem;
-      color: var(--deep-blue);
-      letter-spacing: -0.01em;
-      line-height: 1.25;
-    }
-    .post-meta{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items:center;
-      font-weight: 700;
-      color: #5b6b82;
-      font-size: .92rem;
-      margin-bottom: 10px;
-    }
-    .dot{ opacity:.55; }
-
-    .post-content p{
-      margin: 0 0 12px;
-      color: #4a5568;
-      line-height: 1.8;
-    }
-
-    .tags{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-    .tag{
-      display:inline-flex;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(0,48,144,.06);
-      border: 1px solid rgba(0,48,144,.12);
-      color: var(--deep-blue);
-      font-weight: 800;
-      font-size: .9rem;
-    }
-
-    .readmore{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      text-decoration:none;
-      font-weight: 900;
-      color: var(--bright-green);
-    }
-    .readmore i{ transition:.2s ease; }
-    .readmore:hover i{ transform: translateX(3px); }
-
-    .posts-stack{
-      display:grid;
-      gap: 14px;
-    }
-
-    /* Sidebar */
-    .sidebar{
-      position: sticky;
-      top: 110px;
-      display:grid;
-      gap: 14px;
-    }
-    .side-card{
-      border-radius: 22px;
-      border: 1px solid rgba(11,18,32,.08);
-      box-shadow: var(--shadow-xs);
-      background: #fff;
-      padding: 16px;
-    }
-    .side-card h3{
-      margin: 0 0 10px;
-      color: var(--deep-blue);
-      font-size: 1.15rem;
-      letter-spacing:-0.01em;
-    }
-    .side-card p{
-      margin: 0 0 12px;
-      color: #4a5568;
-      line-height: 1.75;
-      font-size: .98rem;
-    }
-    .side-links{
-      display:grid;
-      gap: 10px;
-    }
-    .side-links a{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      text-decoration:none;
-      color: var(--dark);
-      font-weight: 800;
-      padding: 10px 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(11,18,32,.06);
-      transition: .2s ease;
-    }
-    .side-links a:hover{
-      border-color: rgba(0,48,144,.18);
-      background: rgba(0,48,144,.04);
-      transform: translateY(-2px);
-    }
-    .side-links i{ color: var(--bright-green); margin-top: 2px; }
-    .side-links span{ color: #4a5568; font-weight: 700; font-size: .92rem; display:block; margin-top: 2px; }
-
-    /* Search */
-    .search{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      padding: 12px;
-      border-radius: 18px;
-      border: 1px solid rgba(11,18,32,.08);
-      background: #fff;
-      box-shadow: var(--shadow-xs);
-    }
-    .search i{ color: var(--deep-blue); }
-    .search input{
-      border:none;
-      outline:none;
-      width:100%;
-      font-family: inherit;
-      font-weight: 700;
-      color: var(--dark);
-      background: transparent;
-    }
-    .search input::placeholder{ color:#8aa0bf; font-weight:700; }
-
-    /* Mobile responsiveness */
-    @media (max-width: 980px){
-      .blog-grid{ grid-template-columns: 1fr; }
-      .sidebar{ position: static; top: auto; }
-    }
-    @media (max-width: 640px){
-      main{ padding-top: 100px; }
-      .post-card{ flex-direction: column; }
-      .post-icon{ width: 48px; height: 48px; border-radius: 16px; }
-      .post-content h2{ font-size: 1.15rem; }
-    }
-  </style>
+<link rel="stylesheet" href="blog.css">
 </head>
 
 <body>
@@ -250,12 +29,12 @@
       </div>
 
       <div class="nav-links" id="navLinks">
-        <a href="index.html#home">Home</a>
+        <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
-        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="blog.html" aria-current="page">Health Blogs</a>
         <a href="gallery.html">Gallery</a>
-        <a href="index.html#contact" class="contact-link" style="color: aliceblue;">Book Consultation</a>
+        <a href="contact.html" class="contact-link" style="color: aliceblue;">Book Consultation</a>
       </div>
 
       <div class="menu-toggle" id="menuToggle">
@@ -267,16 +46,28 @@
   <main>
 
     <!-- Minimal hero -->
-    <header class="blog-hero">
-      <div class="container">
-        <div class="kicker"><i class="fas fa-newspaper"></i> Health Education</div>
-        <h1>Health Articles & Clinic Updates</h1>
-        <p>
-          Practical, easy-to-understand medical information—written to support better health decisions.
-          Explore articles focused on diabetes, heart health, kidney care, nutrition and more.
-        </p>
-      </div>
-    </header>
+   <header class="blog-hero hero-60 with-breadcrumbs">
+  <div class="container">
+
+    <!-- Optional breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Blog</span>
+    </nav>
+
+    <div class="kicker"><i class="fas fa-newspaper"></i> Health Education</div>
+
+    <h1>Health Articles & Clinic Updates</h1>
+
+    <p>
+      Practical, easy-to-understand medical information—written to support better health decisions.
+      Explore articles on diabetes, heart health, kidney care, nutrition, and long-term wellness.
+    </p>
+
+  </div>
+</header>
+
 
     <section class="blog-layout">
       <div class="container">
