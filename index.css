@@ -1614,7 +1614,7 @@ img, video, iframe {
     padding: 12px;
 
     border-radius: 18px;
-    background: transparent;
+    background: black;
     
 
     max-height: 0;

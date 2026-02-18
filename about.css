@@ -8,7 +8,7 @@
       background:
         radial-gradient(circle at 18% 18%, rgba(16,192,0,.18), transparent 40%),
         radial-gradient(circle at 85% 10%, rgba(0,48,144,.18), transparent 45%),
-        linear-gradient(135deg, #f6fbff 0%, #ffffff 100%);
+        linear-gradient(135deg, #18191a 0%, #151414 100%);
       overflow: hidden;
     }
     .about-hero::before{
@@ -628,8 +628,8 @@
 
   /* Background image */
   background:
-    linear-gradient(to right, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.88) 50%, rgba(255,255,255,0.95) 100%),
-    url("lelad-favicon.webp");
+    linear-gradient(to right, rgba(27, 26, 26, 0.92) 0%, rgba(31, 30, 30, 0.88) 50%, rgba(44, 43, 43, 0.95) 100%),
+    url("https://images.unsplash.com/photo-1454367021904-b6a8d452fc48?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   background-position: center;
 }
@@ -669,15 +669,16 @@
 /* Title */
 .hero-bg h1{
   font-size: clamp(2.2rem, 4vw, 3.2rem);
-  color: var(--deep-blue);
+  color: aliceblue;
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin-bottom: 14px;
+  font-weight: 400;
 }
 
 /* Subtitle */
 .hero-sub{
-  color: #4a5568;
+  color: aliceblue;
   font-size: 1.08rem;
   line-height: 1.8;
   font-weight: 500;
