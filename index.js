@@ -4,6 +4,7 @@ window.addEventListener("scroll", () => {
   navbar.classList.toggle("scrolled", window.scrollY > 10);
 });
 
+
 // 2) Mobile toggle (ONLY ONCE)
 const navbar = document.querySelector(".navbar");
 const toggle = document.getElementById("menuToggle");
@@ -28,3 +29,16 @@ navLinks.querySelectorAll("a").forEach(a => {
 // 4) Set footer year/date once (NOT on scroll)
 document.getElementById("currentYear").textContent = new Date().getFullYear();
 document.getElementById("currentDate").textContent = new Date().toLocaleDateString();
+// Auto highlight active nav link
+const currentPage = location.pathname.split("/").pop();
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  const href = link.getAttribute("href");
+
+  if (
+    (currentPage === "" && href === "index.html") ||
+    href === currentPage
+  ) {
+    link.classList.add("active");
+  }
+});

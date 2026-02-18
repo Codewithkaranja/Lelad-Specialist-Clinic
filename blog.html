@@ -1,0 +1,660 @@
+<!-- blog.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Articles | Lelad Specialist Clinic</title>
+
+  <!-- Jost -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="index.css" />
+
+  <style>
+    main{ padding-top: 110px; }
+
+    /* Minimal header (not cluttery) */
+    .blog-hero{
+      padding: 48px 0 28px;
+      background: #fff;
+    }
+    .blog-hero .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(0,48,144,.06);
+      border: 1px solid rgba(0,48,144,.12);
+      color: var(--deep-blue);
+      font-weight: 800;
+      width: fit-content;
+      margin-bottom: 12px;
+    }
+    .blog-hero .kicker i{ color: var(--bright-green); }
+    .blog-hero h1{
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.03em;
+      color: var(--deep-blue);
+      margin-bottom: 8px;
+      line-height: 1.12;
+    }
+    .blog-hero p{
+      color: #4a5568;
+      max-width: 72ch;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* Layout */
+    .blog-layout{
+      padding: 34px 0 90px;
+      background: #fff;
+    }
+    .blog-grid{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    /* Posts list */
+    .post-card{
+      border-radius: 22px;
+      border: 1px solid rgba(11,18,32,.08);
+      box-shadow: var(--shadow-xs);
+      background: #fff;
+      padding: 18px;
+      display:flex;
+      gap: 16px;
+      align-items:flex-start;
+      transition: .2s ease;
+    }
+    .post-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(0,48,144,.18);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .post-icon{
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display:grid;
+      place-items:center;
+      background: linear-gradient(135deg, rgba(0,48,144,.12), rgba(16,192,0,.12));
+      border: 1px solid rgba(0,48,144,.12);
+      flex: 0 0 auto;
+    }
+    .post-icon i{ color: var(--deep-blue); font-size: 18px; }
+
+    .post-content h2{
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+      color: var(--deep-blue);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .post-meta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      font-weight: 700;
+      color: #5b6b82;
+      font-size: .92rem;
+      margin-bottom: 10px;
+    }
+    .dot{ opacity:.55; }
+
+    .post-content p{
+      margin: 0 0 12px;
+      color: #4a5568;
+      line-height: 1.8;
+    }
+
+    .tags{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .tag{
+      display:inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(0,48,144,.06);
+      border: 1px solid rgba(0,48,144,.12);
+      color: var(--deep-blue);
+      font-weight: 800;
+      font-size: .9rem;
+    }
+
+    .readmore{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none;
+      font-weight: 900;
+      color: var(--bright-green);
+    }
+    .readmore i{ transition:.2s ease; }
+    .readmore:hover i{ transform: translateX(3px); }
+
+    .posts-stack{
+      display:grid;
+      gap: 14px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      position: sticky;
+      top: 110px;
+      display:grid;
+      gap: 14px;
+    }
+    .side-card{
+      border-radius: 22px;
+      border: 1px solid rgba(11,18,32,.08);
+      box-shadow: var(--shadow-xs);
+      background: #fff;
+      padding: 16px;
+    }
+    .side-card h3{
+      margin: 0 0 10px;
+      color: var(--deep-blue);
+      font-size: 1.15rem;
+      letter-spacing:-0.01em;
+    }
+    .side-card p{
+      margin: 0 0 12px;
+      color: #4a5568;
+      line-height: 1.75;
+      font-size: .98rem;
+    }
+    .side-links{
+      display:grid;
+      gap: 10px;
+    }
+    .side-links a{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      text-decoration:none;
+      color: var(--dark);
+      font-weight: 800;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,18,32,.06);
+      transition: .2s ease;
+    }
+    .side-links a:hover{
+      border-color: rgba(0,48,144,.18);
+      background: rgba(0,48,144,.04);
+      transform: translateY(-2px);
+    }
+    .side-links i{ color: var(--bright-green); margin-top: 2px; }
+    .side-links span{ color: #4a5568; font-weight: 700; font-size: .92rem; display:block; margin-top: 2px; }
+
+    /* Search */
+    .search{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      padding: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(11,18,32,.08);
+      background: #fff;
+      box-shadow: var(--shadow-xs);
+    }
+    .search i{ color: var(--deep-blue); }
+    .search input{
+      border:none;
+      outline:none;
+      width:100%;
+      font-family: inherit;
+      font-weight: 700;
+      color: var(--dark);
+      background: transparent;
+    }
+    .search input::placeholder{ color:#8aa0bf; font-weight:700; }
+
+    /* Mobile responsiveness */
+    @media (max-width: 980px){
+      .blog-grid{ grid-template-columns: 1fr; }
+      .sidebar{ position: static; top: auto; }
+    }
+    @media (max-width: 640px){
+      main{ padding-top: 100px; }
+      .post-card{ flex-direction: column; }
+      .post-icon{ width: 48px; height: 48px; border-radius: 16px; }
+      .post-content h2{ font-size: 1.15rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar (same system) -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <img src="lelad-favicon.webp" class="logo-img" alt="Logo">
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#home">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="blog.html" aria-current="page">Blog</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="index.html#contact" class="contact-link" style="color: aliceblue;">Book Consultation</a>
+      </div>
+
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Minimal hero -->
+    <header class="blog-hero">
+      <div class="container">
+        <div class="kicker"><i class="fas fa-newspaper"></i> Health Education</div>
+        <h1>Health Articles & Clinic Updates</h1>
+        <p>
+          Practical, easy-to-understand medical information—written to support better health decisions.
+          Explore articles focused on diabetes, heart health, kidney care, nutrition and more.
+        </p>
+      </div>
+    </header>
+
+    <section class="blog-layout">
+      <div class="container">
+
+        <div class="blog-grid">
+
+          <!-- POSTS -->
+          <section>
+            <div class="search" style="margin-bottom: 14px;">
+              <i class="fas fa-magnifying-glass"></i>
+              <input id="blogSearch" type="text" placeholder="Search articles (e.g. blood pressure, diabetes, kidney)..." />
+            </div>
+
+            <div class="posts-stack" id="postsStack">
+
+              <!-- 1 -->
+              <article class="post-card" data-title="High Blood Pressure: Signs, Risks & How to Control It">
+                <div class="post-icon"><i class="fas fa-heart-pulse"></i></div>
+                <div class="post-content">
+                  <h2>High Blood Pressure: Signs, Risks & How to Control It</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Hypertension</span>
+                    <span class="dot">•</span>
+                    <span>5 min read</span>
+                    <span class="dot">•</span>
+                    <span>Cardiac Evaluation</span>
+                  </div>
+                  <p>
+                    Many people have high blood pressure without symptoms. Learn what it does to the body, how it’s diagnosed, and what really works for control.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">BP Monitoring</span>
+                    <span class="tag">Prevention</span>
+                    <span class="tag">Lifestyle</span>
+                  </div>
+                  <a class="readmore" href="blog-hypertension-control.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 2 -->
+              <article class="post-card" data-title="Diabetes Care: What to Track and When to See a Specialist">
+                <div class="post-icon"><i class="fas fa-syringe"></i></div>
+                <div class="post-content">
+                  <h2>Diabetes Care: What to Track and When to See a Specialist</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Diabetes</span>
+                    <span class="dot">•</span>
+                    <span>6 min read</span>
+                    <span class="dot">•</span>
+                    <span>Specialist Consultation</span>
+                  </div>
+                  <p>
+                    From blood sugar trends to foot and eye checks—this guide breaks down what matters most and how to prevent complications early.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">Nutrition</span>
+                    <span class="tag">Prevention</span>
+                  </div>
+                  <a class="readmore" href="blog-diabetes-what-to-track.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 3 -->
+              <article class="post-card" data-title="Chest Tightness, Wheezing or Cough: When to Get Checked">
+                <div class="post-icon"><i class="fas fa-lungs"></i></div>
+                <div class="post-content">
+                  <h2>Chest Tightness, Wheezing or Cough: When to Get Checked</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Chest/Asthma</span>
+                    <span class="dot">•</span>
+                    <span>5 min read</span>
+                    <span class="dot">•</span>
+                    <span>Specialist Consultation</span>
+                  </div>
+                  <p>
+                    Not every cough is “just flu.” Learn warning signs, triggers, and how chest clinics help confirm asthma and guide treatment.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">Breathing</span>
+                    <span class="tag">Triggers</span>
+                    <span class="tag">Care Plan</span>
+                  </div>
+                  <a class="readmore" href="blog-chest-asthma-when-to-check.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 4 -->
+              <article class="post-card" data-title="Kidney Health: Early Signs of Kidney Problems You Shouldn’t Ignore">
+                <div class="post-icon"><i class="fas fa-kidneys"></i></div>
+                <div class="post-content">
+                  <h2>Kidney Health: Early Signs of Kidney Problems You Shouldn’t Ignore</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Kidney</span>
+                    <span class="dot">•</span>
+                    <span>6 min read</span>
+                    <span class="dot">•</span>
+                    <span>Specialist Consultation</span>
+                  </div>
+                  <p>
+                    Kidney disease can be silent early. Learn who is at risk, what tests matter, and habits that protect kidney function.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">CKD</span>
+                    <span class="tag">Testing</span>
+                    <span class="tag">Prevention</span>
+                  </div>
+                  <a class="readmore" href="blog-kidney-early-signs.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 5 -->
+              <article class="post-card" data-title="Understanding ECG & Echo: What These Heart Tests Actually Show">
+                <div class="post-icon"><i class="fas fa-wave-square"></i></div>
+                <div class="post-content">
+                  <h2>Understanding ECG & Echo: What These Heart Tests Actually Show</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Diagnostics</span>
+                    <span class="dot">•</span>
+                    <span>7 min read</span>
+                    <span class="dot">•</span>
+                    <span>Cardiac Evaluation</span>
+                  </div>
+                  <p>
+                    ECG and Echo are different tests. This article explains what each checks, when doctors recommend them, and how results guide care.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">ECG</span>
+                    <span class="tag">Echo</span>
+                    <span class="tag">Heart Care</span>
+                  </div>
+                  <a class="readmore" href="blog-ecg-echo-explained.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 6 -->
+              <article class="post-card" data-title="Medication Adherence: Why Treatment ‘Fails’ When Doses Are Missed">
+                <div class="post-icon"><i class="fas fa-prescription-bottle-alt"></i></div>
+                <div class="post-content">
+                  <h2>Medication Adherence: Why Treatment ‘Fails’ When Doses Are Missed</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Pharmacy</span>
+                    <span class="dot">•</span>
+                    <span>5 min read</span>
+                    <span class="dot">•</span>
+                    <span>In-House Pharmacy</span>
+                  </div>
+                  <p>
+                    Skipping doses can undo progress. Learn simple strategies to stay consistent, manage side effects, and know when to review meds.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">Adherence</span>
+                    <span class="tag">Safety</span>
+                    <span class="tag">Counselling</span>
+                  </div>
+                  <a class="readmore" href="blog-medication-adherence.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 7 -->
+              <article class="post-card" data-title="Nutrition for Blood Pressure & Diabetes: What to Eat (Realistic Kenyan Meals)">
+                <div class="post-icon"><i class="fas fa-apple-alt"></i></div>
+                <div class="post-content">
+                  <h2>Nutrition for Blood Pressure & Diabetes: What to Eat (Realistic Kenyan Meals)</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Nutrition</span>
+                    <span class="dot">•</span>
+                    <span>7 min read</span>
+                    <span class="dot">•</span>
+                    <span>Nutritional Guidance</span>
+                  </div>
+                  <p>
+                    Diet doesn’t have to be complicated. Learn how to build balanced meals, reduce sugar and salt, and still enjoy familiar foods.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">Lifestyle</span>
+                    <span class="tag">Portions</span>
+                    <span class="tag">Long-term</span>
+                  </div>
+                  <a class="readmore" href="blog-nutrition-kenyan-meals.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 8 -->
+              <article class="post-card" data-title="When Should You Get Lab Tests? A Simple Guide for Adults">
+                <div class="post-icon"><i class="fas fa-vials"></i></div>
+                <div class="post-content">
+                  <h2>When Should You Get Lab Tests? A Simple Guide for Adults</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Laboratory</span>
+                    <span class="dot">•</span>
+                    <span>6 min read</span>
+                    <span class="dot">•</span>
+                    <span>Laboratory Services</span>
+                  </div>
+                  <p>
+                    Lab tests help confirm a diagnosis and track chronic illness. Learn which tests are commonly used and how to prepare for them.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">Diagnostics</span>
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">Fasting</span>
+                  </div>
+                  <a class="readmore" href="blog-when-to-do-labs.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 9 -->
+              <article class="post-card" data-title="Heart Failure Basics: Symptoms, Triggers, and Why Follow-up Matters">
+                <div class="post-icon"><i class="fas fa-heart"></i></div>
+                <div class="post-content">
+                  <h2>Heart Failure Basics: Symptoms, Triggers, and Why Follow-up Matters</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> Heart Failure</span>
+                    <span class="dot">•</span>
+                    <span>6 min read</span>
+                    <span class="dot">•</span>
+                    <span>Cardiac Evaluation</span>
+                  </div>
+                  <p>
+                    Heart failure can be managed well with the right plan. Learn common symptoms, what worsens it, and how monitoring helps.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">Monitoring</span>
+                    <span class="tag">Medication</span>
+                    <span class="tag">Lifestyle</span>
+                  </div>
+                  <a class="readmore" href="blog-heart-failure-basics.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+              <!-- 10 -->
+              <article class="post-card" data-title="General Consultation: How to Prepare for a Doctor’s Visit (So You Get Value)">
+                <div class="post-icon"><i class="fas fa-user-md"></i></div>
+                <div class="post-content">
+                  <h2>General Consultation: How to Prepare for a Doctor’s Visit (So You Get Value)</h2>
+                  <div class="post-meta">
+                    <span><i class="fas fa-tag" style="color:var(--bright-green)"></i> General Care</span>
+                    <span class="dot">•</span>
+                    <span>5 min read</span>
+                    <span class="dot">•</span>
+                    <span>General Consultation</span>
+                  </div>
+                  <p>
+                    Bring the right details and you’ll get a better diagnosis and plan. This guide shows what to carry, what to note, and what to ask.
+                  </p>
+                  <div class="tags">
+                    <span class="tag">Checklist</span>
+                    <span class="tag">Follow-up</span>
+                    <span class="tag">Clarity</span>
+                  </div>
+                  <a class="readmore" href="blog-how-to-prepare-consultation.html">Read article <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- SIDEBAR -->
+          <aside class="sidebar">
+
+            <div class="side-card">
+              <h3>Quick Links</h3>
+              <p>Explore services and book a consultation in one tap.</p>
+              <div class="side-links">
+                <a href="services.html"><i class="fas fa-list-check"></i> Services <span>Cardiac, diabetes, labs, nutrition</span></a>
+                <a href="about.html"><i class="fas fa-circle-info"></i> About <span>Doctor profile & clinic approach</span></a>
+                <a href="index.html#contact"><i class="fas fa-calendar-check"></i> Book Consultation <span>Call or get directions</span></a>
+              </div>
+            </div>
+
+            <div class="side-card">
+              <h3>Extra Blogs</h3>
+              <p>Start here if you want quick, practical reads.</p>
+              <div class="side-links">
+                <a href="blog-hypertension-control.html"><i class="fas fa-book-open"></i> Blood Pressure Control <span>Symptoms, risks & habits</span></a>
+                <a href="blog-diabetes-what-to-track.html"><i class="fas fa-book-open"></i> Diabetes Tracking <span>What to monitor & why</span></a>
+                <a href="blog-ecg-echo-explained.html"><i class="fas fa-book-open"></i> ECG vs Echo <span>What the tests show</span></a>
+                <a href="blog-kidney-early-signs.html"><i class="fas fa-book-open"></i> Kidney Early Signs <span>Silent symptoms explained</span></a>
+              </div>
+            </div>
+
+            <div class="side-card">
+              <h3>Clinic Note</h3>
+              <p>
+                These articles are for education and do not replace a medical consultation.
+                If symptoms are severe or sudden, seek urgent care.
+              </p>
+              <a href="tel:+254757425633" class="btn btn-primary" style="width:100%; justify-content:center;">
+                <i class="fas fa-phone-alt"></i> Call Clinic
+              </a>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer (same as your theme) -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-logo">
+          <h2>Lelad<span> Specialist</span></h2>
+          <p style="color: #a0b3cc; margin-top: 15px;">Consultant Physician Clinic<br>Excellence in Internal Medicine</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="index.html#home">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <a href="services.html#cardiac">Cardiology</a>
+          <a href="services.html#specialist">Chronic Care</a>
+          <a href="services.html#lab">Diagnostics</a>
+          <a href="services.html#nutrition">Nutrition</a>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Subscribe to health tips and clinic updates</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email">
+            <button><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>
+          © <span id="currentYear"></span> Lelad Specialist Clinic. All rights reserved.
+          <br class="mobile-break">
+          <span class="footer-tagline">Consultant-led internal medicine care in Machakos</span>
+        </p>
+      </div>
+
+      <div class="developer-credit">
+        <p>
+          Website designed and developed by
+          <a href="https://sarahadevelopers.co.ke" target="_blank" rel="noopener" style="color: #10C000;">
+            Saraha Developers
+          </a>
+          | <span id="currentDate"></span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/254757425633?text=Hello%20Lelad%20Clinic,%20I%20would%20like%20to%20book%20a%20consultation."
+     class="floating-whatsapp"
+     target="_blank"
+     rel="noopener"
+     aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="index.js"></script>
+
+  <script>
+    // Simple client-side search (title + excerpt keywords)
+    const input = document.getElementById('blogSearch');
+    const posts = Array.from(document.querySelectorAll('.post-card'));
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      posts.forEach(p => {
+        const title = (p.dataset.title || '').toLowerCase();
+        const body = p.innerText.toLowerCase();
+        const match = !q || title.includes(q) || body.includes(q);
+        p.style.display = match ? '' : 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
